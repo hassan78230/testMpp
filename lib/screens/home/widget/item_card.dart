@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_mpp/screens/detail/detail.dart';
 
 class ItemCard extends StatelessWidget {
   final int index;
@@ -9,7 +10,14 @@ class ItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     var rad = 30.0;
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailPage(item),
+          ),
+        );
+      },
       child: Container(
         padding: const EdgeInsets.only(top: 40, left: 40),
         height: 500,
