@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_mpp/constants/colors.dart';
 import 'package:test_mpp/screens/home/widget/category_list.dart';
 import 'package:test_mpp/screens/home/widget/item_list.dart';
 
@@ -26,26 +27,34 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 height: 15.0,
               ),
-              CategoryList(tabs, selected, (int index) {
-                setState(() {
-                  selected = index;
-                });
-                pc.jumpToPage(index);
-              }),
+              _buildTabBar(),
               const SizedBox(
                 height: 8.0,
               ),
-              Expanded(
-                  child: ItemList(tabs, selected, (int index) {
-                setState(() {
-                  selected = index;
-                });
-              }, pc))
+              _buildList()
             ],
           ),
         ),
       ),
     );
+  }
+
+  _buildList() {
+    return Expanded(
+        child: ItemList(tabs, selected, (int index) {
+      setState(() {
+        selected = index;
+      });
+    }, pc));
+  }
+
+  _buildTabBar() {
+    return CategoryList(tabs, selected, (int index) {
+      setState(() {
+        selected = index;
+      });
+      pc.jumpToPage(index);
+    });
   }
 
   _buildHeader() {
@@ -65,7 +74,7 @@ class _HomePageState extends State<HomePage> {
                   fontFamily: 'Philosopher',
                   fontWeight: FontWeight.bold,
                   fontSize: 45,
-                  color: Color(0xFF0e362b)),
+                  color: kPrimaryColor),
             )
           ],
         ),
@@ -79,7 +88,7 @@ class _HomePageState extends State<HomePage> {
           child: const Icon(
             Icons.apps,
             size: 40,
-            color: Color(0xFF0e362b),
+            color: kPrimaryColor,
           ),
         )
       ],

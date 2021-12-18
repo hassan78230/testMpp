@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:test_mpp/models/item.dart';
 import 'package:test_mpp/screens/detail/detail.dart';
 
 class ItemCard extends StatelessWidget {
   final int index;
-  final Map<String, dynamic> item;
+  final Item item;
   const ItemCard(this.index, this.item, {Key? key}) : super(key: key);
 
   @override
@@ -44,7 +45,7 @@ class ItemCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  item['title'],
+                  item.title!,
                   style: const TextStyle(
                       fontFamily: 'Philosopher',
                       color: Colors.white,
@@ -54,7 +55,7 @@ class ItemCard extends StatelessWidget {
                   height: 15,
                 ),
                 Text(
-                  item['room'],
+                  item.room!,
                   style: const TextStyle(color: Colors.grey, fontSize: 20),
                 ),
               ],
@@ -72,7 +73,7 @@ class ItemCard extends StatelessWidget {
                   child: Column(
                     children: <Widget>[
                       Text(
-                        '\$${item['price'].toString()}',
+                        '\$${item.price.toString()}',
                         style: const TextStyle(
                             color: Colors.white,
                             fontSize: 22,
