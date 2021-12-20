@@ -7,13 +7,13 @@ class ItemList extends StatelessWidget {
   final int selected;
   final Function callBack;
   final PageController pc;
-  ItemList(this.tabs, this.selected, this.callBack, this.pc, {Key? key})
+  const ItemList(this.tabs, this.selected, this.callBack, this.pc, {Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final itemsTotal = Item.generatedItems();
-    var items;
+    List<Item> items = [];
     switch (selected) {
       case 0:
         items = itemsTotal.where((element) => element.top == true).toList();
